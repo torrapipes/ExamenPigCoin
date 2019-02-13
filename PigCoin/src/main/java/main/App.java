@@ -3,6 +3,9 @@ package main;
 import java.security.KeyPair;
 import java.util.Map;
 
+import genSig.GenSig;
+import wallet.Wallet;
+
 public class App {
 
     public static void main( String[] args )
