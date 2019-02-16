@@ -24,14 +24,7 @@ public class Wallet {
     }
     
     
-    // Métodos
-    
-    public void setAddress(PublicKey pKey) {
-    	
-    	this.pKey = pKey;
-    	
-    }
-    
+    // Getters
     
     public PublicKey getAddress() {
     	
@@ -40,31 +33,16 @@ public class Wallet {
     }
     
     
-    public void setSK(PrivateKey sKey) {
+    public double getBalance() {
     	
-    	this.sKey = sKey;
+    	return this.balance;
     	
     }
     
     
     public PrivateKey getSK() {
     	
-    	return this.sKey = sKey;
-    	
-    }
-    
-    
-    public void generateKeyPair() {
-    	
-    	setAddress(GenSig.generateKeyPair().getPublic());
-    	setSK(GenSig.generateKeyPair().getPrivate());
-    	
-    }
-    
-    
-    public void setTotalInput(double input) {
-    	
-    	this.total_input = input;
+    	return this.sKey;
     	
     }
     
@@ -76,16 +54,39 @@ public class Wallet {
     }
     
     
-    public void setTotalOutput(double output) {
+    public double getTotalOutput() {
     	
-    	this.total_output = output;
+    	return this.total_output;
     	
     }
     
     
-    public double getTotalOutput() {
+    // Setters
+    
+    public void setAddress(PublicKey pKey) {
     	
-    	return this.total_output;
+    	this.pKey = pKey;
+    	
+    }
+    
+    
+    public void setSK(PrivateKey sKey) {
+    	
+    	this.sKey = sKey;
+    	
+    }
+    
+ 
+    public void setTotalInput(double input) {
+    	
+    	this.total_input = input;
+    	
+    }
+    
+    
+    public void setTotalOutput(double output) {
+    	
+    	this.total_output = output;
     	
     }
     
@@ -97,9 +98,12 @@ public class Wallet {
     }
     
     
-    public double getBalance() {
+    // Métodos
+
+    public void generateKeyPair() {
     	
-    	return this.balance;
+    	setAddress(GenSig.generateKeyPair().getPublic());
+    	setSK(GenSig.generateKeyPair().getPrivate());
     	
     }
 

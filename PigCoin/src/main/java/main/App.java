@@ -4,6 +4,7 @@ import java.security.KeyPair;
 import java.util.Map;
 
 import genSig.GenSig;
+import transaction.Transaction;
 import wallet.Wallet;
 
 public class App {
@@ -59,4 +60,5 @@ public class App {
         System.out.println(trx.toString());
 
     }
+    
 }

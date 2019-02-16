@@ -32,36 +32,7 @@ public class WalletTest {
 		
 	}
 	
-	
-	@Test
-	public void setAddressTest() {
-		
-		KeyPair pair = GenSig.generateKeyPair();
-		wallet.setAddress(pair.getPublic());
-		assertNotNull(wallet.getAddress());
-		
-	}
-	
-	@Test
-	public void setSKTest() {
-		
-		KeyPair pair = GenSig.generateKeyPair();
-		wallet.setSK(pair.getPrivate());
-		assertNotNull(wallet.getSK());
-		
-	}
-	
-	
-	@Test
-	public void generateKeyPairTest() {
-		
-		wallet.generateKeyPair();
-		KeyPair pair = GenSig.generateKeyPair();
-		assertNotNull(wallet.getAddress());
-		assertNotNull(wallet.getSK());
-		
-	}
-	
+	// GettersTest
 	
 	@Test
 	public void getInputTest() {
@@ -91,5 +62,42 @@ public class WalletTest {
 		assertEquals(balance, wallet.getBalance(), 0.0);
 		
 	}
+	
+	// SettersTest
+	
+	@Test
+	public void setAddressTest() {
+		
+		KeyPair pair = GenSig.generateKeyPair();
+		wallet.setAddress(pair.getPublic());
+		assertNotNull(wallet.getAddress());
+		
+	}
+	
+	
+	@Test
+	public void setSKTest() {
+		
+		KeyPair pair = GenSig.generateKeyPair();
+		wallet.setSK(pair.getPrivate());
+		assertNotNull(wallet.getSK());
+		
+	}
+	
+	
+	// Test de los métodos
+	
+	@Test
+	public void generateKeyPairTest() {
+		
+		wallet.generateKeyPair();
+		KeyPair pair = GenSig.generateKeyPair();
+		assertNotNull(wallet.getAddress());
+		assertNotNull(wallet.getSK());
+		
+	}
+	
+	
+	
 	
 }
