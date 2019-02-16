@@ -53,7 +53,7 @@ public class WalletTest {
 	
 	
 	@Test
-	public void generateKeyPair() {
+	public void generateKeyPairTest() {
 		
 		wallet.generateKeyPair();
 		KeyPair pair = GenSig.generateKeyPair();
@@ -61,4 +61,35 @@ public class WalletTest {
 		assertNotNull(wallet.getSK());
 		
 	}
+	
+	
+	@Test
+	public void getInputTest() {
+		
+		double total_input = 5.5;
+		wallet.setTotalInput(total_input);
+		assertEquals(total_input,wallet.getTotalInput(), 0.0);
+		
+	}
+	
+	
+	@Test
+	public void getOutputTest() {
+		
+		double total_output = 2.2;
+		wallet.setTotalOutput(total_output);
+		assertEquals(total_output, wallet.getTotalOutput(), 0.0);
+		
+	}
+	
+	
+	@Test
+	public void getBalanceTest() {
+		
+		double balance = 4.4;
+		wallet.setBalance(balance);
+		assertEquals(balance, wallet.getBalance(), 0.0);
+		
+	}
+	
 }
