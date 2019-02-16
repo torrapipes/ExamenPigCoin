@@ -1,7 +1,10 @@
 package wallet;
 
+import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+
+import genSig.GenSig;
 
 public class Wallet {
 	
@@ -51,5 +54,11 @@ public class Wallet {
     }
     
     
+    public void generateKeyPair() {
+    	
+    	setAddress(GenSig.generateKeyPair().getPublic());
+    	setSK(GenSig.generateKeyPair().getPrivate());
+    	
+    }
     
 }
