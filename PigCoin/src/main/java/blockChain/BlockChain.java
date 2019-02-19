@@ -41,6 +41,13 @@ public class BlockChain {
 			System.out.println(trx);
 			
 		}
+		
+	}
+	
+	public void summarize(int index) {
+		
+		System.out.println(this.getBlockChain().get(index));
+		
 	}
 	
 	
