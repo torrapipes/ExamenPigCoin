@@ -24,6 +24,7 @@ public class BlockChain {
 		
 	}
 	
+	
 	// Métodos 
 	
 	public void addOrigin(Transaction transaction) {
