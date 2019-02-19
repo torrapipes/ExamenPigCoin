@@ -29,14 +29,86 @@ public class Transaction {
 		
 	}
 
+	// Getters
+	
+	public String getHash() {
+		
+		return this.hash;
+		
+	}
+	
+	
+	public String getPrevHash() {
+		
+		return this.prev_hash;
+		
+	}
+	
+	
+	public PublicKey getPkeySender() {
+		
+		return this.pKey_sender;
+		
+	}
+	
+	
+	public PublicKey getPkeyRecipient() {
+		
+		return this.pKey_recipient;
+		
+	}
+	
+	
+	public double getPigcoins() {
+		
+		return this.pigcoins;
+		
+	}
+	
+	public String getMessage() {
+		
+		return this.message;
+		
+	}
+	
+	
+	// Setters
+	
+	public void setHash(String hash) {
+		
+		this.hash = hash;
+		
+	}
+	
+	
+	public void setMessage(String message) {
+		
+		this.message = message;
+		
+	}
+	
+	
+	public void setPigcoins(double pigcoins) {
+		
+		this.pigcoins = pigcoins;
+		
+	}
+	
+	
+	public void setPrevHash(String prev) {
+		
+		this.prev_hash = prev;
+		
+	}
+	
 	
 	// Métodos
 	
 	@Override
 	public String toString() {
 		
-		return "hash = " + hash + "\n prev_hash = " + prev_hash + "\n pKey_sender = " + pKey_sender.hashCode()
-				+ "\n pKey_recipient = " + pKey_recipient.hashCode() + "\n pigcoins = " + pigcoins + "\n message = " + message;
+		return "hash = " + getHash() + "\n prev_hash = " + getPrevHash() + "\n pKey_sender = " + getPkeySender().hashCode()
+				+ "\n pKey_recipient = " + getPkeyRecipient().hashCode() + "\n pigcoins = " + getPigcoins() + "\n message = " + getMessage();
 		
 	}
 	
