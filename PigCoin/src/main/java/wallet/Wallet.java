@@ -4,7 +4,9 @@ import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
+import blockChain.BlockChain;
 import genSig.GenSig;
+import transaction.Transaction;
 
 public class Wallet {
 	
@@ -79,14 +81,14 @@ public class Wallet {
  
     public void setTotalInput(double input) {
     	
-    	this.total_input = input;
+    	this.total_input += input;
     	
     }
     
     
     public void setTotalOutput(double output) {
     	
-    	this.total_output = output;
+    	this.total_output += output;
     	
     }
     
@@ -106,6 +108,37 @@ public class Wallet {
     	setSK(GenSig.generateKeyPair().getPrivate());
     	
     }
+    
+    
+    public void loadCoins(BlockChain blockChain) {
+    	
+    	for (Transaction trx : blockChain.getBlockChain()) {
+    		
+    		if (trx.getPkeySender().equals(this.getAddress())) {
+    			
+    			
+    			this.setTotalOutput(trx.getPigcoins());
+    			
+    		}
+    		if (trx.getPkeyRecipient().equals(this.getAddress())) {
+    			
+    			this.setTotalInput(trx.getPigcoins());
+    			
+    		}
+    	}
+    	
+    	
+    		
+    	double balance = this.getTotalInput() - this.getTotalOutput();
+    	this.setBalance(balance);
+    	
+    	if (balance < 0) {
+    		
+    		this.setBalance(0);
+    		
+    	}
+	
+    }
 
 
 	@Override
@@ -116,8 +149,7 @@ public class Wallet {
 		
 	}
     
-		
-		
+
 	}
     
    

@@ -9,7 +9,9 @@ import java.security.PublicKey;
 import org.junit.Before;
 import org.junit.Test;
 
+import blockChain.BlockChain;
 import genSig.GenSig;
+import transaction.Transaction;
 import wallet.Wallet;
 
 public class WalletTest {
@@ -20,6 +22,8 @@ public class WalletTest {
 	public void init() {
 		
 		wallet = new Wallet();
+		wallet.generateKeyPair();
+		
 		
 		
 	}
@@ -95,6 +99,26 @@ public class WalletTest {
 		assertNotNull(wallet.getAddress());
 		assertNotNull(wallet.getSK());
 		
+	}
+	
+	@Test
+	public void loadCoinsTest() {
+		
+		Wallet wallet_destino = new Wallet();
+		wallet_destino.generateKeyPair();
+		
+		Transaction trx = new Transaction("hash_1", "0", wallet.getAddress(), wallet_destino.getAddress(), 20, "testing... 1, 2, 3...");
+		
+		BlockChain bChain = new BlockChain();
+		
+		bChain.getBlockChain().add(trx);
+        
+        wallet_destino.loadCoins(bChain);
+        wallet.loadCoins(bChain);
+          
+        assertEquals(20, wallet_destino.getTotalInput(), 0.0);
+		
+        assertEquals(0, wallet.getBalance(), 0.0);
 	}
 	
 	
