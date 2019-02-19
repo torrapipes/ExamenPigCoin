@@ -107,7 +107,8 @@ public class Transaction {
 	@Override
 	public String toString() {
 		
-		return "hash = " + getHash() + "\n prev_hash = " + getPrevHash() + "\n pKey_sender = " + getPkeySender().hashCode()
+		return "\n" + "hash =  " + getHash() + "\n prev_hash = " + 
+				getPrevHash() + "\n pKey_sender = " + getPkeySender().hashCode()
 				+ "\n pKey_recipient = " + getPkeyRecipient().hashCode() + "\n pigcoins = " + getPigcoins() + "\n message = " + getMessage();
 		
 	}

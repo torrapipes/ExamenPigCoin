@@ -34,4 +34,14 @@ public class BlockChain {
 	}
 	
 	
+	public void summarize() {
+		
+		for (Transaction trx : this.getBlockChain()) {
+			
+			System.out.println(trx);
+			
+		}
+	}
+	
+	
 }
