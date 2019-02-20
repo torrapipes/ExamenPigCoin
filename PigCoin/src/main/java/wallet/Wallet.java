@@ -1,8 +1,10 @@
 package wallet;
 
+import java.util.List;
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.util.ArrayList;
 
 import blockChain.BlockChain;
 import genSig.GenSig;
@@ -17,11 +19,13 @@ public class Wallet {
     private double total_input = 0d;
     private double total_output = 0d;
     private double balance = 0d;
+    private List<Transaction> inputTransactions = new ArrayList<Transaction>();
+    private List<Transaction> outputTransactions = new ArrayList<Transaction>();
     
     
     // Constructor
     
-    public Wallet() {
+     public Wallet() {
     	
     }
     
@@ -57,11 +61,25 @@ public class Wallet {
     
     
     public double getTotalOutput() {
+
     	
     	return this.total_output;
     	
     }
     
+    
+    public List<Transaction> getInputTransactions() {
+    	
+    	return this.inputTransactions;
+    	
+    }
+    
+    public List<Transaction> getOutputTransactions() {
+    	
+    	return this.outputTransactions;
+    	
+    }
+
     
     // Setters
     
@@ -140,7 +158,37 @@ public class Wallet {
 	
     }
 
+        
+    public void loadInputTransactions(BlockChain bChain) {
+    	
+    	for(Transaction trx : bChain.getBlockChain()) {
+    		
+    		if(this.getAddress() == trx.getPkeyRecipient()) {
+    			
+    			this.getInputTransactions().add(trx);
+    			
+    		}
+    		
+    	}
+    	
+    }
+    
+    
+    public void loadOutputTransactions(BlockChain bChain) {
+    	
+    	for(Transaction trx : bChain.getBlockChain()) {
+    		
+    		if(this.getAddress() == trx.getPkeySender()) {
+    			
+    			this.getOutputTransactions().add(trx);
+    			
+    		}
+    		
+    	}
 
+    }
+
+    
 	@Override
 	public String toString() {
 		

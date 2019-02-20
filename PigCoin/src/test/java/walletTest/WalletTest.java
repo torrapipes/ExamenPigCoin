@@ -122,6 +122,28 @@ public class WalletTest {
 	}
 	
 	
+	@Test
+	public void loadInputTransactions() {
+		
+		BlockChain bChain = new BlockChain();
+		
+		Wallet wallet_1 = new Wallet();
+		
+		Transaction trxIn = new Transaction("hash_1", "0", wallet_1.getAddress(), wallet.getAddress(), 20, "testing... 1, 2, 3...");
+		Transaction trxOut = new Transaction("hash_1", "0", wallet.getAddress(), wallet_1.getAddress(), 20, "testing... 1, 2, 3...");
+		
+		bChain.getBlockChain().add(trxIn);
+		bChain.getBlockChain().add(trxOut);
+		
+		wallet.loadInputTransactions(bChain);
+		wallet.loadOutputTransactions(bChain);
+		
+		assertEquals(trxIn, wallet.getInputTransactions().get(0));
+		assertEquals(trxOut, wallet.getOutputTransactions().get(0));
+		
+	}
+	
+	
 	
 	
 }
