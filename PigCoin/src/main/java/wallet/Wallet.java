@@ -149,7 +149,7 @@ public class Wallet {
     	double balance = this.getTotalInput() - this.getTotalOutput();
     	this.setBalance(balance);
     	
-    	if (balance < 0) {
+    	if (this.getBalance() < 0) {
     		
     		this.setBalance(0);
     		
