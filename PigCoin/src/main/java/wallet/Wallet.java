@@ -134,7 +134,6 @@ public class Wallet {
     		
     		if (trx.getPkeySender().equals(this.getAddress())) {
     			
-    			
     			this.setTotalOutput(trx.getPigcoins());
     			
     		}

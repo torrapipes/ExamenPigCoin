@@ -136,6 +136,58 @@ public class App {
         System.out.println("Transacciones = " + wallet_2.getInputTransactions().toString()); 
         
         
+        /**
+         * Recargamos la wallet_1
+         * y visualizamos el blockchain
+         */
+        
+        System.out.println("\n" + ">>>>>>>>>>>> RECARGA WALLET_1 >>>>>>>>>>>>" + "\n");
+        
+        trx = new Transaction("hash_4", "2", origin.getAddress(), wallet_1.getAddress(), 20, "sausages puagh!");
+        bChain.addOrigin(trx);
+        trx = new Transaction("hash_5", "3", origin.getAddress(), wallet_1.getAddress(), 10, "baked beans are off!");
+        bChain.addOrigin(trx);
+
+        System.out.println("\n" + "Ver BlockChain" + "\n" + 
+                                  "=============="        );
+        bChain.summarize();
+
+        System.out.println("\n" + "Ver el total de pigcoins de las dos wallet" + "\n" + 
+                                  "=========================================="        );
+        
+        wallet_1.loadCoins(bChain);
+        wallet_1.loadInputTransactions(bChain);
+        wallet_1.loadOutputTransactions(bChain);
+        System.out.println(wallet_1.toString());
+
+        wallet_2.loadCoins(bChain);
+        wallet_2.loadInputTransactions(bChain);
+        wallet_2.loadOutputTransactions(bChain);
+        System.out.println(wallet_2.toString());   
+        
+        
+        /**
+         * Enviar pigcoins de la wallet_1 a la wallet_2
+         * Este es el flujo de trabajo que has de programar.
+         * 
+         * wallet_1.sendCoins(wallet_2.getAddress(), pigcoins, message, bChain) {
+         *      
+         *          collectCoins(pigcoins);
+         *          signTransaction(message);
+         *          bChain.processTransactions(pKey_sender, pKey_recipient, consumedCoins, message, signedTransaction);
+         *      };
+         * 
+         * bChain.processTransactions(pKey_sender, pKey_recipient, consumedCoins, message, signedTransaction) {
+         *      
+         *          isSignatureValid(public_Key, message, signedTransaction)
+         *          isConsumedCoinValid(consumedCoins);
+         *          createTransaction(pKey_sender, pKey_recipient, consumedCoins,message, signedTransaction);
+         *       }
+         * 
+         * A continuacion se detalla la responsabilidad de cada metodo.
+         */
+        
+        System.out.println("\n" + ">>>>>>>>>>>> Wallet_1 envia transaccion de pigcoins a wallet_2 >>>>>>>>>>>>" + "\n");
     }
     
 }
